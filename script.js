@@ -68,12 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+
+
 let reviewsSwiper;
 let currentDirection;
 
 function initSwiper() {
-  const direction = window.innerWidth <= 992 ? "horizontal" : "vertical";
-  const isMobile = window.innerWidth <= 992; 
+  const isMobile = window.innerWidth <= 992;
+  const direction = isMobile ? "horizontal" : "vertical";
 
   if (reviewsSwiper && currentDirection === direction) return;
 
@@ -84,43 +88,32 @@ function initSwiper() {
   reviewsSwiper = new Swiper(".reviews__swiper", {
     direction,
     loop: true,
-    speed: isMobile ? 600 : 5500, 
+    speed: isMobile ? 600 : 5500,
 
-    autoplay: isMobile
-      ? false 
-      : {
-          delay: 0,
-          disableOnInteraction: false,
-        },
+    autoplay: !isMobile && {
+      delay: 0,
+      disableOnInteraction: false,
+    },
 
-    freeMode: isMobile
-      ? false 
-      : {
-          enabled: true,
-          momentum: false,
-        },
-
-    allowTouchMove: isMobile, 
+    allowTouchMove: isMobile,
 
     slidesPerView: 3,
     spaceBetween: 10,
 
     pagination: {
-             el: ".reviews__pagination ",
+      el: ".reviews__pagination",
       clickable: true,
     },
 
-      breakpoints: {
+    breakpoints: {
       320: { slidesPerView: 1 },
       576: { slidesPerView: 1.5 },
       768: { slidesPerView: 2 },
-     
       992: { slidesPerView: 3 },
     },
   });
 
-  const wrapper = document.querySelector(".reviews-swiper");
-
+  const wrapper = document.querySelector(".reviews__swiper");
   wrapper.onmouseenter = () => !isMobile && reviewsSwiper.autoplay?.stop?.();
   wrapper.onmouseleave = () => !isMobile && reviewsSwiper.autoplay?.start?.();
 }
@@ -130,24 +123,6 @@ window.addEventListener("resize", () => {
   clearTimeout(window._resizeTimer);
   window._resizeTimer = setTimeout(initSwiper, 250);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
