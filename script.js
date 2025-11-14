@@ -1,3 +1,54 @@
+
+
+jQuery.event.special.touchstart = {
+  setup: function (_, ns, handle) {
+    this.addEventListener("touchstart", handle, { passive: false });
+  },
+};
+
+jQuery.event.special.touchmove = {
+  setup: function (_, ns, handle) {
+    this.addEventListener("touchmove", handle, { passive: false });
+  },
+};
+
+
+$(function () {
+  let Accordion = function (el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+    let links = this.el.find(".link");
+    links.on("click", { el: this.el, multiple: this.multiple }, this.dropdown);
+  };
+
+  Accordion.prototype.dropdown = function (e) {
+    let $el = e.data.el;
+    let $this = $(this),
+      $next = $this.next();
+
+    $next.slideToggle();
+
+    if (!e.data.multiple) {
+      $el.find(".submenu").not($next).slideUp();
+    }
+
+    if (!$this.hasClass("open")) {
+      $(".link").removeClass("open");
+      $this.addClass("open");
+    } else {
+      $this.removeClass("open");
+    }
+  };
+
+  let accordion = new Accordion($("#accordion"), false);
+
+  let firstLink = $("#accordion .link").first();
+  let firstSub = firstLink.next(".submenu");
+
+  firstLink.addClass("open");
+  firstSub.show();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".menu-list-link").forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -45,23 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     headerMenu.classList.toggle("active");
     menuBg.classList.remove("active");
     document.body.classList.remove("no-scrolling");
-  });
-
-  const faqList = document.querySelector(".faq__list");
-
-  faqList.addEventListener("click", function (e) {
-    if (e.target.closest(".faq__button")) {
-      const item = e.target.closest(".faq__item");
-      const isOpen = item.classList.contains("show");
-
-      document.querySelectorAll(".faq__item.show").forEach((openItem) => {
-        openItem.classList.remove("show");
-      });
-
-      if (!isOpen) {
-        item.classList.add("show");
-      }
-    }
   });
 
  
@@ -123,6 +157,33 @@ window.addEventListener("resize", () => {
   clearTimeout(window._resizeTimer);
   window._resizeTimer = setTimeout(initSwiper, 250);
 });
+
+let swiperWhy = null
+
+function initSwipers() {
+    const width = window.innerWidth
+
+    if (width <= 1024 && !swiperWhy) {
+        swiperWhy = new Swiper('.why__swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            pagination: {
+                el: '.why__pagination',
+                clickable: true,
+            },
+        })
+    } else if (width > 1024 && swiperWhy) {
+        swiperWhy.destroy(true, true)
+        swiperWhy = null
+    }
+
+}
+
+initSwipers()
+
+window.addEventListener('resize', () => {
+    initSwipers()
+})
 
 
 document.addEventListener("DOMContentLoaded", () => {

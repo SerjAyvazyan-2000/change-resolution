@@ -15,21 +15,21 @@
 /* 字体定义 */
 @font-face {
   font-family: "inter";
-  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+  src: url("fonts/Inter-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "inter";
-  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+  src: url("fonts/Inter-Medium.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "inter";
-  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+  src: url("fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -218,6 +218,78 @@ p {
 .btn:hover .icon {
   background-color: var(--bg-card-2);
 }
+.G-flex {
+  display: flex;
+}
+
+.G-inline-flex {
+  display: inline-flex;
+}
+
+.G-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.G-column-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.G-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.G-justify-center {
+  justify-content: center;
+  display: flex;
+}
+
+.G-justify-between {
+  justify-content: space-between;
+  display: flex;
+}
+
+.G-justify-around {
+  justify-content: space-around;
+  display: flex;
+}
+
+.G-justify-end {
+  justify-content: flex-end;
+  display: flex;
+}
+.G-justify-start {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.G-align-center {
+  align-items: center;
+  display: flex;
+}
+
+.G-align-start {
+  align-items: flex-start;
+  display: flex;
+}
+
+.G-align-end {
+  align-items: flex-end;
+  display: flex;
+}
+
+.G-flex-column {
+  flex-direction: column;
+  display: flex;
+}
+
+.G-flex-wrap {
+  flex-wrap: wrap;
+  display: flex;
+}
 
 .btn-dark {
   background-color: var(--bg-header);
@@ -308,7 +380,7 @@ p {
 .fade-top,
 .fade-bottom {
   opacity: 0;
-  transform: translate3d(0, 0, 0);
+  transform: translate(0, 0);
   transition-property: transform, opacity;
   transition-duration: 2s;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -1613,9 +1685,10 @@ button.swiper-pagination-bullet {
 .steps__columns {
   display: flex;
   gap: 20px;
-  background-image: url("../img/grid.webp");
+  background-image: url("img/grid.webp");
   background-size: cover;
   position: relative;
+  will-change: unset;
 }
 
 .steps__columns .grid {
@@ -1658,8 +1731,8 @@ button.swiper-pagination-bullet {
   padding: 40px;
   position: relative;
   z-index: 1;
-  -webkit-backdrop-filter: blur(23px);
-  backdrop-filter: blur(23px);
+  background-image: url("img/whybg.webp");
+  background-size: cover;
 }
 
 .steps__list {
@@ -1740,7 +1813,7 @@ button.swiper-pagination-bullet {
 }
 
 .features__column-color {
-  background-image: url("../img/can/bg.webp");
+  background-image: url("img/can/bg.webp");
   background-size: cover;
 }
 
@@ -2051,79 +2124,56 @@ button.swiper-pagination-bullet {
   object-fit: cover;
 }
 
-/* FAQ组件 */
+
 .faq__title {
   margin-bottom: 40px;
 }
-
-.faq__list {
-  display: flex;
-  flex-direction: column;
+.faq-items {
   gap: 10px;
 }
-
-.faq__item {
+.faq-item {
+  background: #1b1c1f;
   border-radius: 10px;
-  background-color: var(--bg-header);
-  display: grid;
-  grid-template-rows: auto 0fr;
-  transition: all 0.6s ;
+  box-shadow: 0px 0px 12px 0px #0000001f;
+  padding: 10px 10px 10px 16px;
+  cursor: pointer;
 }
-
-.faq__item.show {
-  padding-bottom: 10px;
-  grid-template-rows: auto 1fr;
+.faq-item-header {
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
 }
-
-
-
-.faq__wrapper {
-  margin: 0 62px 0 16px;
-  transition: all 0.6s ;
-  opacity: 0;
-  max-height: 0;
-  visibility: hidden;
-}
-
-.faq__item.show .faq__wrapper{
-  max-height: 1000px;
-  visibility: visible;
-    opacity: 0.6;
-}
-.faq__item.show .faq__indicator img {
+.faq-item-header img{
+  transition: all 0.3s ease 0s;
+} 
+.faq-item-header.open img {
   transform: rotate(180deg);
 }
-
-.faq__button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: space-between;
-  padding: 10px 10px 10px 16px;
-}
-
-.faq__caption {
+.faq-item-header h3 {
+  font-weight: 600;
   font-size: 18px;
   line-height: 24px;
-  font-weight: 600;
-  text-align: left;
+  color: #DCE8FF;
 }
-
-.faq__indicator {
-  min-width: 40px;
-  min-height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.faq-item-icon {
+  width: 40px;
+  height: 40px;
+  background: #242528;
+  flex: 0 0 40px;
   border-radius: 6px;
-  background-color: var(--bg-button);
-  transition: all 0.3s ease 0s;
 }
 
-.faq__indicator img {
-  transition: all 0.3s ease 0s;
+.faq-sub-text {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+  opacity: 0.6;
 }
-
+.submenu {
+  display: none;
+}
 
 
 .footer {
@@ -2789,20 +2839,6 @@ button.swiper-pagination-bullet {
     max-width: 250px;
   }
 
-  .faq__caption {
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 500;
-  }
-
-  .faq__indicator {
-    min-width: 32px;
-    min-height: 32px;
-  }
-
-  .faq__wrapper {
-    margin-right: 52px;
-  }
 
   .footer__wrapper {
     padding: 42px 0 40px 0;
@@ -2852,6 +2888,30 @@ button.swiper-pagination-bullet {
   .steps__columns .grid img {
     -o-object-fit: cover;
     object-fit: cover;
+  }
+  .faq-section {
+    margin-top: 80px;
+  }
+  .faq-item-icon {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+  .faq-item-header h3 {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+  .faq-sub-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .why__swiper .swiper-slide{
+    width: 100%;
+  }
+  .steps__column {
+    background-image: url("img/whybg-mobile.webp");
   }
 
   .features__body {

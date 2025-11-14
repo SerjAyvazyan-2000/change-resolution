@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexa-AI</title>
 
-    <link rel="preload" href="/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
     
 
     <link rel="stylesheet" href="style.css">
@@ -487,94 +487,117 @@
             <section id="faq" class="faq section">
                 <div class="faq__container container">
                     <h2 class="faq__title title fade-top">Все, что нужно знать о нейросети</h2>
-                    <div class="faq__list fade-bottom">
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Какого максимального размера изображение я могу получить?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Нейросеть может увеличить фото до 8K (8000×6000 пикселей) без потери качества.</p>
+                    <div
+                        id="accordion"
+                        class="faq-items block-cnt G-flex-column fade-bottom"
+                    >
+                        <div class="faq-item">
+                        <div class="faq-item-header link G-align-center">
+                            <h3>
+                            <span class="desktop-block"
+                                >Какого максимального размера изображение я могу получить?</span
+                            >
+                            </h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Сможет ли сервис улучшить старые или размытые фотографии?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Да, алгоритм восстанавливает детали и делает изображение чётче, даже если исходник был неидеальным.</p>
+                        <div class="faq-sub-text submenu">
+                            Нейросеть может увеличить фото до 8K (8000×6000 пикселей) без потери качества.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>
+                            Сможет ли сервис улучшить старые или размытые фотографии?
+                            </h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Нужно ли устанавливать программу?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Нет, всё работает прямо в браузере. Просто загрузите файл и получите готовый результат.</p>
+                        <div class="faq-sub-text submenu">
+                            Да, алгоритм восстанавливает детали и делает изображение чётче, даже если исходник был неидеальным.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>Нужно ли устанавливать программу?</h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Поддерживаются ли все форматы изображений?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Мы работаем с JPG, PNG, WEBP, TIFF и RAW.</p>
+                        <div class="faq-sub-text submenu">
+                            Нет, всё работает прямо в браузере. Просто загрузите файл и получите готовый результат.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>
+                            <span class="desktop-block"
+                                >Поддерживаются ли все форматы изображений?</span
+                            >
+                            <!-- <span class="mobile-block">
+                                Могу ли я использовать изображения в своих проектах?
+                            </span> -->
+                            </h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Сохраняются ли мои файлы на сервере?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Нет, все изображения обрабатываются в режиме реального времени и удаляются после скачивания.</p>
+                        <div class="faq-sub-text submenu">
+                            Мы работаем с JPG, PNG, WEBP, TIFF и RAW.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>Сохраняются ли мои файлы на сервере?</h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Можно ли увеличить картинку в несколько раз сразу?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Да, вы можете выбрать ×2, ×4, ×6 или ×8, а система подберёт оптимальный результат.</p>
+                        <div class="faq-sub-text submenu">
+                           Нет, все изображения обрабатываются в режиме реального времени и удаляются после скачивания.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>Можно ли увеличить картинку в несколько раз сразу?</h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Работает ли нейросеть с картинками для печати?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Да, можно увеличить фото до качества, подходящего для печати на больших форматах.</p>
+                        <div class="faq-sub-text submenu">
+                           Да, вы можете выбрать ×2, ×4, ×6 или ×8, а система подберёт оптимальный результат.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>Работает ли нейросеть с картинками для печати?</h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
                         </div>
-                        <div class="faq__item" >
-                            <button class="faq__button btn-reset">
-                                <span class="faq__caption">Сколько времени занимает обработка изображения?</span>
-                                <div class="faq__indicator">
-                                    <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
-                                </div>
-                            </button>
-                            <div class="faq__wrapper">
-                                <p>Обычно от 1 до 5 секунд, в зависимости от размера файла.</p>
+                        <div class="faq-sub-text submenu">
+                           Да, можно увеличить фото до качества, подходящего для печати на больших форматах.
+                        </div>
+                        </div>
+
+                        <div class="faq-item">
+                        <div class="faq-item-header G-align-center link">
+                            <h3>Сколько времени занимает обработка изображения?</h3>
+                            <div class="faq-item-icon G-center">
+                            <img src="img/arrow.svg" alt="img" width="" heigth="" loading="lazy">
                             </div>
+                        </div>
+                        <div class="faq-sub-text submenu">
+                           Обычно от 1 до 5 секунд, в зависимости от размера файла.
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -617,6 +640,9 @@
             </div>
         </footer>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/1.3.6/jquery.event.move.min.js"></script>
     <script  src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script  src="script.js"></script>
 </body>
